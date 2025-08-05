@@ -29,28 +29,28 @@
 
         .container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
+            gap: 20px;
         }
 
         .card {
             position: relative;
             background-color: rgba(20,20,20,0.9);
             border-radius: 20px;
-            width: 280px;
-            height: 150px;
+            width: 220px;
+            height: 180px;
             padding: 20px;
             box-sizing: border-box;
             transition: all 0.3s ease;
             font-family: 'Pretendard', sans-serif;
+            text-decoration: none;
+            color: inherit;
         }
 
         .card:hover {
             transform: translateY(-10px) scale(1.05);
         }
 
-        /* 기호 번호 (왼쪽 아래 강조) */
         .number {
             position: absolute;
             bottom: 15px;
@@ -61,7 +61,6 @@
             opacity: 0.8;
         }
 
-        /* 이름 (오른쪽 위 두 줄) */
         .names {
             position: absolute;
             top: 20px;
@@ -83,16 +82,12 @@
         /* 색상별 스타일 */
         .blue { border: 2px solid rgb(0,132,255); box-shadow: 0 0 20px rgba(0,132,255,0.5); color: rgb(0,132,255); }
         .blue:hover { box-shadow: 0 0 30px rgba(0,132,255,0.8); }
-
         .red { border: 2px solid rgb(255,50,50); box-shadow: 0 0 20px rgba(255,50,50,0.5); color: rgb(255,50,50); }
         .red:hover { box-shadow: 0 0 30px rgba(255,50,50,0.8); }
-
         .yellow { border: 2px solid rgb(255,215,0); box-shadow: 0 0 20px rgba(255,215,0,0.5); color: rgb(255,215,0); }
         .yellow:hover { box-shadow: 0 0 30px rgba(255,215,0,0.8); }
-
         .green { border: 2px solid rgb(0,255,128); box-shadow: 0 0 20px rgba(0,255,128,0.5); color: rgb(0,255,128); }
         .green:hover { box-shadow: 0 0 30px rgba(0,255,128,0.8); }
-
         .orange { border: 2px solid rgb(255,140,0); box-shadow: 0 0 20px rgba(255,140,0,0.5); color: rgb(255,140,0); }
         .orange:hover { box-shadow: 0 0 30px rgba(255,140,0,0.8); }
     </style>
@@ -100,45 +95,44 @@
 <body>
     <h1>2025 전교회장선거</h1>
     <div class="container">
-        <div class="card blue">
+        <a href="candidate1.html" class="card blue">
             <div class="number">1</div>
             <div class="names">
                 <p>이재원</p>
                 <p>이재형</p>
             </div>
-        </div>
-        <div class="card red">
+        </a>
+        <a href="candidate2.html" class="card red">
             <div class="number">2</div>
             <div class="names">
                 <p>유현규</p>
                 <p>김지후</p>
             </div>
-        </div>
-        <div class="card yellow">
+        </a>
+        <a href="candidate3.html" class="card yellow">
             <div class="number">3</div>
             <div class="names">
                 <p>김시은</p>
                 <p>박주언</p>
             </div>
-        </div>
-        <div class="card green">
+        </a>
+        <a href="candidate4.html" class="card green">
             <div class="number">4</div>
             <div class="names">
                 <p>이주호</p>
                 <p>김도윤</p>
             </div>
-        </div>
-        <div class="card orange">
+        </a>
+        <a href="candidate5.html" class="card orange">
             <div class="number">5</div>
             <div class="names">
                 <p>장윤호</p>
                 <p>임영석</p>
             </div>
-        </div>
+        </a>
     </div>
 </body>
 </html>
-
 
 
 
