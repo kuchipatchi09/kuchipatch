@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Q-PI Members 2025</title>
+    <title>2025 전교회장선거</title>
     <meta charset="utf-8">
-    <!-- Pretendard & BR Cobane 불러오기 -->
+    <!-- Pretendard & BR Cobane -->
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/br-cobane" rel="stylesheet">
     <style>
@@ -23,93 +23,89 @@
             font-family: 'BR Cobane', sans-serif;
             font-size: 70px;
             letter-spacing: 4px;
-            text-align: center;
             margin-bottom: 60px;
             text-shadow: 0 0 10px rgba(255,255,255,0.6);
         }
 
-        h1 span.year {
-            color: rgb(0,132,255);
-            text-shadow: 0 0 15px rgba(0,132,255,0.9), 0 0 30px rgba(0,132,255,0.6);
-        }
-
         .container {
             display: flex;
-            gap: 50px;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 40px;
         }
 
         .card {
             background-color: rgba(20,20,20,0.9);
             border-radius: 25px;
-            padding: 30px 50px;
-            border: 2px solid rgb(0,132,255);
-            box-shadow: 0 0 20px rgba(0,132,255,0.3);
+            padding: 25px 40px;
+            width: 250px;
             transition: all 0.3s ease;
-            width: 280px;
+            text-align: center;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 20px;
+            margin: 5px 0;
+            font-weight: 500;
         }
 
         .card:hover {
             transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 0 30px rgba(0,132,255,0.7);
         }
 
-        .card h2 {
-            font-family: 'Pretendard', sans-serif;
-            font-size: 30px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 20px;
-            color: rgb(0,132,255);
-            text-shadow: 0 0 10px rgba(0,132,255,0.8);
-        }
-
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-
-        .card li {
-            font-family: 'Pretendard', sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-            padding: 8px 0;
-            letter-spacing: 1px;
-        }
+        /* 색상별 스타일 */
+        .blue { border: 2px solid rgb(0,132,255); box-shadow: 0 0 20px rgba(0,132,255,0.5); }
+        .blue:hover { box-shadow: 0 0 30px rgba(0,132,255,0.8); }
+        .red { border: 2px solid rgb(255,50,50); box-shadow: 0 0 20px rgba(255,50,50,0.5); }
+        .red:hover { box-shadow: 0 0 30px rgba(255,50,50,0.8); }
+        .yellow { border: 2px solid rgb(255,215,0); box-shadow: 0 0 20px rgba(255,215,0,0.5); }
+        .yellow:hover { box-shadow: 0 0 30px rgba(255,215,0,0.8); }
+        .green { border: 2px solid rgb(0,255,128); box-shadow: 0 0 20px rgba(0,255,128,0.5); }
+        .green:hover { box-shadow: 0 0 30px rgba(0,255,128,0.8); }
+        .orange { border: 2px solid rgb(255,140,0); box-shadow: 0 0 20px rgba(255,140,0,0.5); }
+        .orange:hover { box-shadow: 0 0 30px rgba(255,140,0,0.8); }
     </style>
 </head>
 <body>
-    <h1>Q-PI Members <span class="year">2025</span></h1>
+    <h1>2025 전교회장선거</h1>
     <div class="container">
-        <!-- 2학년 카드 -->
-        <div class="card">
-            <h2>2학년</h2>
-            <ul>
-                <li>이재원</li>
-                <li>정  진</li>
-                <li>우진우</li>
-                <li>이주호</li>
-            </ul>
+        <div class="card blue">
+            <h2>기호 1번</h2>
+            <p>전교회장 후보: 이재원</p>
+            <p>전교부회장 후보: 이재형</p>
         </div>
-
-        <!-- 1학년 카드 -->
-        <div class="card">
-            <h2>1학년</h2>
-            <ul>
-                <li>송인우</li>
-                <li>황석현</li>
-                <li>김동현</li>
-                <li>황석현</li>
-                <li>안정환</li>
-                <li>이은세</li>
-            </ul>
+        <div class="card red">
+            <h2>기호 2번</h2>
+            <p>전교회장 후보: 유현규</p>
+            <p>전교부회장 후보: 김지후</p>
+        </div>
+        <div class="card yellow">
+            <h2>기호 3번</h2>
+            <p>전교회장 후보: 김시은</p>
+            <p>전교부회장 후보: 박주언</p>
+        </div>
+        <div class="card green">
+            <h2>기호 4번</h2>
+            <p>전교회장 후보: 이주호</p>
+            <p>전교부회장 후보: 김도윤</p>
+        </div>
+        <div class="card orange">
+            <h2>기호 5번</h2>
+            <p>전교회장 후보: 장윤호</p>
+            <p>전교부회장 후보: 임영석</p>
         </div>
     </div>
 </body>
 </html>
+
+
 
 
 
