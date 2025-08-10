@@ -3,19 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>8월의 싱그러운 2반 알리미 — v1.0</title>
+<title>8월의 싱그러운 2반 알리미 — v1.1</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
-  :root{
+  :root {
     --bg1: #000;
     --bg2: #111;
     --main: #ff3399;
     --muted: rgba(255,255,255,0.72);
     --card-bg: rgba(15,15,18,0.85);
     --glass: rgba(255,255,255,0.03);
-    --neon-shadow: 0 0 18px rgba(255,51,153,0.12), 0 0 40px rgba(255,51,153,0.06);
-    --table-glow: 0 0 12px rgba(255,51,153,0.12);
-    --safe-font: Pretendard, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', 'Helvetica Neue', Arial;
+    --safe-font: Pretendard, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', Arial;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -25,275 +23,165 @@
     background:linear-gradient(180deg,var(--bg1),var(--bg2));
     color:#fff;
     font-family:var(--safe-font);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
     padding:28px;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:18px;
   }
-
   /* Header */
   .topbar{
     width:100%;
     max-width:1200px;
     display:flex;
-    gap:16px;
-    align-items:flex-end;
     justify-content:space-between;
-  }
-  .brand{
-    display:flex;
-    gap:18px;
     align-items:flex-end;
-  }
-  .brand-left{
-    text-align:left;
   }
   h1{
     margin:0;
     font-size:28px;
     color:var(--main);
-    letter-spacing:0.2px;
     text-shadow:0 0 12px rgba(255,51,153,0.18);
   }
   .vtag{
-    display:inline-block;
-    margin-left:8px;
     font-size:11px;
     color:var(--muted);
     padding:4px 8px;
     border-radius:999px;
-    background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
+    background:rgba(255,255,255,0.02);
+    margin-left:6px;
   }
   .brand-sub{
     margin-top:6px;
     color:var(--muted);
     font-size:13px;
   }
-
-  .brand-right{
-    display:flex;
-    gap:12px;
-    align-items:center;
-  }
-  .logo{
-    width:84px;
-    height:auto;
-    border-radius:8px;
-    background:var(--glass);
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:var(--neon-shadow);
-    padding:6px;
-  }
-  .logo img{width:72px;height:auto;display:block}
-
-  /* basic info strip */
+  /* Info bar */
   .info-strip{
     width:100%;
     max-width:1200px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    background:rgba(255,255,255,0.02);
     border-radius:10px;
-    padding:12px 16px;
+    padding:10px 16px;
     display:flex;
-    gap:16px;
-    align-items:center;
     justify-content:space-between;
-    box-shadow:0 6px 30px rgba(0,0,0,0.6);
-    border:1px solid rgba(255,51,153,0.06);
+    border:1px solid rgba(255,51,153,0.05);
+    font-size:14px;
   }
-  .info-left{ display:flex; gap:12px; align-items:center; }
   .class-pill{
     font-weight:700;
     color:var(--main);
     background:rgba(255,51,153,0.06);
-    padding:8px 12px;
+    padding:6px 10px;
     border-radius:8px;
-    font-size:13px;
-    box-shadow:0 2px 10px rgba(255,51,153,0.03);
+    margin-right:8px;
   }
-  .info-meta{ color:var(--muted); font-size:14px; }
-  .info-right{ color:var(--muted); font-size:13px; text-align:right; }
-
-  /* Layout grid */
+  /* Layout */
   .layout{
     width:100%;
     max-width:1200px;
     display:grid;
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns:1.6fr 1fr;
     gap:18px;
-    align-items:start;
   }
   @media (max-width:980px){
-    .layout{ grid-template-columns:1fr; }
+    .layout{grid-template-columns:1fr;}
   }
-
-  /* Cards */
+  /* Card */
   .card{
     background:var(--card-bg);
     border-radius:12px;
     padding:18px;
-    box-shadow:var(--neon-shadow);
     border:1px solid rgba(255,51,153,0.05);
-    transition:transform .2s ease, box-shadow .2s ease;
   }
-  .card:hover{ transform:translateY(-6px); box-shadow:0 12px 60px rgba(255,51,153,0.06) }
-
   .card h2{
-    margin:0 0 10px 0;
+    margin:0 0 12px;
     color:var(--main);
     font-size:16px;
-    text-shadow:0 0 8px rgba(255,51,153,0.06);
+    padding-bottom:6px;
+    border-bottom:1px solid rgba(255,51,153,0.15);
   }
-  .muted{ color:var(--muted); font-size:13px; }
-
-  /* Timetable table */
-  .table-wrap{
-    overflow:auto;
-    padding:6px;
-    border-radius:10px;
-    border:1px solid rgba(255,51,153,0.04);
-    background:linear-gradient(180deg, rgba(255,51,153,0.01), transparent);
-  }
+  /* Timetable */
+  .table-wrap{overflow:auto;}
   table.timetable{
     width:100%;
     border-collapse:collapse;
-    table-layout:fixed; /* important for equal widths */
+    table-layout:fixed;
     min-width:720px;
-    color:#fff;
     font-size:14px;
   }
-  /* column sizing: first col fixed(60px), others equal */
-  colgroup col:first-child{ width:60px; }
-  colgroup col:not(:first-child){ width: calc((100% - 60px) / 5); }
-
-  table.timetable thead th{
+  colgroup col:first-child{width:60px;}
+  colgroup col:not(:first-child){width:calc((100% - 60px)/5);}
+  thead th{
     padding:10px;
     background:rgba(255,51,153,0.06);
     border:1px solid rgba(255,51,153,0.12);
-    color: var(--main);
+    color:var(--main);
     font-weight:700;
-    text-align:center;
-    font-size:13px;
-    height:48px;
   }
-
-  table.timetable tbody td{
+  tbody td{
     padding:8px;
     border:1px solid rgba(255,51,153,0.08);
     text-align:center;
-    vertical-align:middle;
-    height:64px;             /* uniform row height for body rows */
-    white-space:nowrap;      /* prevent line-break inside a cell (4글자 과목 안잘림) */
+    height:64px;
+    white-space:nowrap;
     font-weight:600;
-    text-shadow:0 0 6px rgba(255,51,153,0.03);
-    background: linear-gradient(180deg, rgba(255,51,153,0.01), rgba(255,51,153,0.005));
   }
-  /* first column (교시) styling */
-  table.timetable tbody td:first-child{
-    background: rgba(255,255,255,0.02);
+  tbody td:first-child{
+    background:rgba(255,255,255,0.02);
     color:var(--muted);
     font-weight:700;
   }
-
-  /* Right column cards */
-  .stack{ display:flex; flex-direction:column; gap:12px; }
-  .lunch-body{ font-size:15px; line-height:1.6; color:#fff; }
-  .notice-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
-  .notice-list li{
-    background:rgba(0,0,0,0.25);
-    padding:8px 10px; border-radius:8px;
-    border-left:4px solid rgba(255,51,153,0.25);
-    color:var(--muted);
-    font-weight:600;
+  /* Notices */
+  .notice-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
   }
-
-  /* Utilities row */
-  .utils{ display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap; }
-  .btn{
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    color:var(--muted);
-    padding:8px 12px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
+  .notice-item{
+    background:rgba(255,255,255,0.02);
+    border-left:4px solid var(--main);
+    padding:10px 12px;
+    border-radius:6px;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.2s;
   }
-  .btn.ghost{ border-color:rgba(255,51,153,0.06); color:var(--main) }
-  .small{ font-size:13px }
-
-  /* footer */
-  .footer{
-    width:100%;
-    max-width:1200px;
-    color:rgba(255,255,255,0.45);
-    font-size:13px;
-    text-align:center;
-    padding:18px 0 40px 0;
+  .notice-item:hover{background:rgba(255,51,153,0.08);}
+  .notice-date{
+    font-weight:700;
+    color:var(--main);
+    min-width:66px;
   }
-
-  /* small responsive tweaks */
-  @media (max-width:680px){
-    table.timetable{ min-width:600px; }
-    .brand-right{ display:none; }
-  }
+  .notice-text{color:#fff; font-size:14px;}
 </style>
 </head>
 <body>
-  <!-- header -->
-  <div class="topbar" role="banner">
-    <div class="brand">
-      <div class="brand-left">
-        <h1>8월의 싱그러운 2반 알리미 <span class="vtag">v1.0</span></h1>
-        <div class="brand-sub muted">한눈에 보는 시간표 · 급식 · 공지 — 깔끔하고 빠르게</div>
-      </div>
-    </div>
-
-    <div class="brand-right" aria-hidden="true">
-      <div class="logo" title="QPI Logo">
-        <!-- Put your logo at img/QPIlogo.png -->
-        <img src="img/QPIlogo.png" alt="QPI Logo" onerror="this.style.display='none'">
-      </div>
+  <div class="topbar">
+    <div>
+      <h1>8월의 싱그러운 2반 알리미 <span class="vtag">v1.1</span></h1>
+      <div class="brand-sub">한눈에 보는 시간표 · 급식 · 이번주 공지</div>
     </div>
   </div>
 
-  <!-- basic info -->
-  <div class="info-strip" role="region" aria-label="기본 정보">
-    <div class="info-left">
-      <div class="class-pill">충남과학고등학교 · 1학년 2반</div>
-      <div class="info-meta" id="meta-brief">
-        <!-- populated by JS -->
-      </div>
-    </div>
-    <div class="info-right" id="meta-right">
-      <!-- right side (week/semester/time) populated by JS -->
-    </div>
+  <div class="info-strip">
+    <div><span class="class-pill">1학년 2반</span>충남과학고등학교 · 담임: 신미애</div>
+    <div id="meta-right"></div>
   </div>
 
-  <!-- main layout -->
-  <main class="layout" role="main">
-    <!-- left: timetable -->
-    <section class="card" aria-labelledby="tt-title">
-      <h2 id="tt-title">주간 시간표</h2>
-      <div class="table-wrap" role="table" aria-label="주간 시간표">
-        <!-- colgroup sets fixed first col (교시) and equal others -->
-        <table class="timetable" role="presentation">
-          <colgroup>
-            <col />
-            <col /><col /><col /><col /><col />
-          </colgroup>
+  <main class="layout">
+    <section class="card">
+      <h2>주간 시간표</h2>
+      <div class="table-wrap">
+        <table class="timetable">
+          <colgroup><col /><col /><col /><col /><col /><col /></colgroup>
           <thead>
             <tr>
-              <th scope="col">교시</th>
-              <th scope="col">월</th>
-              <th scope="col">화</th>
-              <th scope="col">수</th>
-              <th scope="col">목</th>
-              <th scope="col">금</th>
+              <th>교시</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th>
             </tr>
           </thead>
           <tbody>
@@ -307,148 +195,68 @@
           </tbody>
         </table>
       </div>
-
-      <div class="utils" aria-hidden="true">
-        <button class="btn ghost small" id="printBtn" title="이 페이지 인쇄">인쇄</button>
-        <button class="btn small" id="downloadBtn" title="시간표 CSV 다운로드">CSV 다운로드</button>
-        <div style="flex:1"></div>
-        <div class="muted small">모든 칸은 1행·1열 제외 동일 크기 · 4글자 과목 줄바꿈 방지</div>
-      </div>
     </section>
 
-    <!-- right: lunch & notices -->
-    <aside class="stack">
-      <section class="card" aria-labelledby="lunch-title">
-        <h2 id="lunch-title">오늘의 급식</h2>
-        <div class="lunch-body" id="lunch-info">급식 정보를 불러오는 중입니다...</div>
-        <div class="muted small" style="margin-top:10px">데이터 출처: NEIS (학교 급식 API)</div>
+    <aside>
+      <section class="card">
+        <h2>오늘의 급식</h2>
+        <div id="lunch-info">불러오는 중...</div>
       </section>
 
-      <section class="card" aria-labelledby="notice-title">
-        <h2 id="notice-title">공지사항</h2>
-        <ul class="notice-list" id="notice-list" role="list">
-          <!-- items appended by JS -->
-        </ul>
-        <div class="muted small" style="margin-top:8px">공지 추가는 담당자에게 문의하세요.</div>
+      <section class="card" style="margin-top:18px;">
+        <h2>이번주 공지사항</h2>
+        <ul class="notice-list" id="notice-list"></ul>
       </section>
     </aside>
   </main>
 
-  <div class="footer">
-    Designed by QPI's HWANG SEOK HYUN · Developed by QPI · © 2025 QPI — 1.0 Release
-  </div>
-
 <script>
-/* ----------------------------
-   BASIC INFO & TIME UPDATES
-   ---------------------------- */
-const CLASS_NAME = "1학년 2반";
-const HOMEROOM = "담임: 신미애";
-const SCHOOL = "충남과학고등학교";
-
-function isoWeekNumber(d) {
-  // ISO week number helper
-  const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-  const dayNum = date.getUTCDay() || 7;
-  date.setUTCDate(date.getUTCDate() + 4 - dayNum);
-  const yearStart = new Date(Date.UTC(date.getUTCFullYear(),0,1));
-  return Math.ceil((((date - yearStart) / 86400000) + 1)/7);
+function updateMeta(){
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
+  const timeStr=now.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('meta-right').textContent=`${dateStr} · ${timeStr}`;
 }
+updateMeta();
+setInterval(updateMeta,60000);
 
-function updateBasicInfo(){
-  const now = new Date();
-  const dateOptions = { year:'numeric', month:'long', day:'numeric', weekday:'long' };
-  const dateStr = now.toLocaleDateString('ko-KR', dateOptions);
-  const timeStr = now.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
-  const week = isoWeekNumber(now);
-  document.getElementById('meta-brief').textContent = `${SCHOOL} · ${CLASS_NAME} · ${HOMEROOM}`;
-  document.getElementById('meta-right').textContent = `오늘: ${dateStr} · 현재시각: ${timeStr} · ISO주차: ${week}`;
-}
-updateBasicInfo();
-setInterval(updateBasicInfo, 60*1000); // 1분마다 갱신
-
-/* ----------------------------
-   NEIS 급식 API (오늘 급식)
-   Replace YOUR_API_KEY with your real NEIS key.
-   ---------------------------- */
+// 급식 API (NEIS)
 async function loadLunch(){
   const today = new Date();
   const yyyy = today.getFullYear();
-  const mm = String(today.getMonth()+1).padStart(2,'0');
-  const dd = String(today.getDate()).padStart(2,'0');
-  const MLSV_YMD = `${yyyy}${mm}${dd}`;
-  const KEY = "YOUR_API_KEY"; // ← 여기에 NEIS(교육부) 발급키 입력
-  const ATPT_OFCDC_SC_CODE = "C10"; // 충남교육청 (예: C10)
-  const SD_SCHUL_CODE = "8140293"; // 충남과학고 (예시)
-  const endpoint = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}&MLSV_YMD=${MLSV_YMD}`;
-
-  const el = document.getElementById('lunch-info');
-  if(KEY === "YOUR_API_KEY"){
-    el.innerHTML = `<div style="opacity:0.9;color:var(--muted)">NEIS API 키가 설정되어 있지 않습니다. <br>환경에서 KEY를 넣으면 자동으로 오늘 급식을 불러옵니다.</div>`;
-    return;
-  }
-
-  try {
-    const res = await fetch(endpoint);
-    const data = await res.json();
-    if (data && data.mealServiceDietInfo && data.mealServiceDietInfo[1] && data.mealServiceDietInfo[1].row && data.mealServiceDietInfo[1].row.length){
-      const menuRaw = data.mealServiceDietInfo[1].row[0].DDISH_NM || '';
-      const menu = menuRaw.replace(/<br\s*\/?>/gi, ', ').replace(/\([^\)]*\)/g, ''); // 태그/영양성분 제거
-      el.textContent = menu;
-    } else {
-      el.textContent = "오늘 급식 정보가 없습니다.";
-    }
-  } catch(err){
-    console.error('NEIS error', err);
-    el.textContent = "급식 정보를 불러오는 중 오류가 발생했습니다.";
-  }
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const date = `${yyyy}${mm}${dd}`;
+  const KEY = "YOUR_API_KEY";
+  const ATPT = "C10";
+  const SCHUL = "8140293";
+  const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT}&SD_SCHUL_CODE=${SCHUL}&MLSV_YMD=${date}`;
+  const el=document.getElementById('lunch-info');
+  if(KEY==="YOUR_API_KEY"){el.innerHTML="<span style='color:var(--muted)'>API 키를 설정해주세요</span>";return;}
+  try{
+    const res=await fetch(url);
+    const data=await res.json();
+    if(data.mealServiceDietInfo){
+      const menu=data.mealServiceDietInfo[1].row[0].DDISH_NM.replace(/<br\s*\/?>/gi, ', ').replace(/\(\d+\.?\d*g\)/g,'');
+      el.textContent=menu;
+    }else{el.textContent="급식 정보 없음";}
+  }catch{el.textContent="불러오기 실패";}
 }
 loadLunch();
 
-/* ----------------------------
-   Notices (editable list)
-   ---------------------------- */
-const notices = [
-  "과학 축제 안내 - 장소: 대강당",
-  "방과후 수업 시간표 일부 변경 공지",
-  "시험 기간 귀마개 지원 예정 (학생회 제공)",
-  "동아리 발표회 참가 신청: 학생회실로 문의"
+// 공지사항 데이터
+const notices=[
+  {date:"8/12",text:"8월 단사 촬영"},
+  {date:"8/13",text:"학생회장선거"},
+  {date:"8/13",text:"아인슈타인-피카소 오디세이 제출 마감"},
+  {date:"8/14",text:"배구 대항전 (점심 시간)"}
 ];
-const noticeList = document.getElementById('notice-list');
+const list=document.getElementById('notice-list');
 notices.forEach(n=>{
-  const li = document.createElement('li');
-  li.textContent = n;
-  noticeList.appendChild(li);
-});
-
-/* ----------------------------
-   Print & CSV download for timetable
-   ---------------------------- */
-document.getElementById('printBtn').addEventListener('click', ()=> window.print());
-
-document.getElementById('downloadBtn').addEventListener('click', ()=>{
-  // Build CSV from table
-  const rows = [...document.querySelectorAll('table.timetable tr')];
-  const csv = rows.map(r=>{
-    const cols = [...r.querySelectorAll('th,td')].map(c => `"${c.innerText.replace(/"/g,'""')}"`);
-    return cols.join(',');
-  }).join('\n');
-  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `${CLASS_NAME}_time_table.csv`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-});
-
-/* ----------------------------
-   Accessibility: focus outlines for keyboard users
-   ---------------------------- */
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Tab') document.body.classList.add('show-focus-outlines');
+  const li=document.createElement('li');
+  li.className="notice-item";
+  li.innerHTML=`<div class="notice-date">${n.date}</div><div class="notice-text">${n.text}</div>`;
+  list.appendChild(li);
 });
 </script>
 </body>
