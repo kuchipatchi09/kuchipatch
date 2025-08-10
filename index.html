@@ -5,6 +5,9 @@
 <title>3학년 2반 알리미</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
+  :root {
+    --main-color: #ff3399;
+  }
   body {
     background: linear-gradient(180deg, #000, #111);
     color: #fff;
@@ -14,27 +17,34 @@
     text-align: center;
   }
   h1 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     font-size: 2rem;
-    color: #ffa500;
+    color: var(--main-color);
+    text-shadow: 0 0 15px var(--main-color);
+  }
+  .date-info {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 2rem;
   }
   .grid {
     display: grid;
     gap: 20px;
     max-width: 1200px;
     margin: auto;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
   .card {
     background: rgba(20, 20, 20, 0.9);
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px var(--main-color);
     text-align: left;
   }
   .card h2 {
-    color: #ffa500;
+    color: var(--main-color);
     margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px var(--main-color);
   }
   table {
     width: 100%;
@@ -42,9 +52,13 @@
     color: #fff;
   }
   th, td {
-    padding: 6px;
+    padding: 8px;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--main-color);
+    text-shadow: 0 0 5px var(--main-color);
+  }
+  th {
+    background: rgba(255, 51, 153, 0.2);
   }
   ul {
     margin: 0;
@@ -59,6 +73,7 @@
 <body>
 
 <h1>3학년 2반 알리미</h1>
+<div class="date-info" id="date-info">오늘 날짜: 불러오는 중...</div>
 
 <div class="grid">
   <!-- 주간 시간표 -->
@@ -67,16 +82,18 @@
     <table>
       <thead>
         <tr>
-          <th>요일</th>
-          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+          <th>교시</th>
+          <th>월</th><th>화</th><th>수</th><th>목</th><th>금</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>월</td><td>수학</td><td>물리</td><td>영어</td><td>화학</td><td>국어</td><td>정보</td><td>자율</td></tr>
-        <tr><td>화</td><td>국어</td><td>수학</td><td>지구과학</td><td>영어</td><td>체육</td><td>화학</td><td>창체</td></tr>
-        <tr><td>수</td><td>물리</td><td>국어</td><td>수학</td><td>영어</td><td>미술</td><td>자율</td><td>진로</td></tr>
-        <tr><td>목</td><td>지구과학</td><td>영어</td><td>체육</td><td>국어</td><td>수학</td><td>물리</td><td>화학</td></tr>
-        <tr><td>금</td><td>국어</td><td>수학</td><td>영어</td><td>물리</td><td>음악</td><td>지구과학</td><td>창체</td></tr>
+        <tr><td>1</td><td>물리</td><td>정보</td><td>정보</td><td>과제연구</td><td>생명과학</td></tr>
+        <tr><td>2</td><td>화학</td><td>체육</td><td>대수</td><td>과제연구</td><td>생명과학</td></tr>
+        <tr><td>3</td><td>대수</td><td>미적분</td><td>미적분</td><td>영어</td><td>지구과학</td></tr>
+        <tr><td>4</td><td>체육</td><td>국어</td><td>과제연구</td><td>정보</td><td>지구과학</td></tr>
+        <tr><td>5</td><td>영어</td><td>물리</td><td>창체</td><td>화학</td><td>물리</td></tr>
+        <tr><td>6</td><td>지구과학</td><td>영어</td><td>창체</td><td>화학</td><td>생명과학</td></tr>
+        <tr><td>7</td><td>미적분</td><td>대수</td><td>창체</td><td>국어</td><td>국어</td></tr>
       </tbody>
     </table>
   </div>
@@ -96,17 +113,20 @@
 
 <script>
 // 오늘 날짜 구하기
-function getToday() {
+function setTodayInfo() {
+  const today = new Date();
+  const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+  document.getElementById('date-info').innerText = `오늘 날짜: ${today.toLocaleDateString('ko-KR', options)}`;
+}
+setTodayInfo();
+
+// 오늘의 급식 (NEIS API)
+async function loadLunch() {
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
-  return `${yyyy}${mm}${dd}`;
-}
-
-// 오늘의 급식 (NEIS API)
-async function loadLunch() {
-  const date = getToday();
+  const date = `${yyyy}${mm}${dd}`;
   const KEY = "YOUR_API_KEY"; // 네이스 API 키 입력
   const ATPT = "C10"; // 충남교육청 코드
   const SCHUL = "8140293"; // 충남과학고등학교 코드
@@ -116,7 +136,9 @@ async function loadLunch() {
     const res = await fetch(url);
     const data = await res.json();
     if (data.mealServiceDietInfo) {
-      const menu = data.mealServiceDietInfo[1].row[0].DDISH_NM.replace(/<br\s*\/?>/gi, ', ');
+      const menu = data.mealServiceDietInfo[1].row[0].DDISH_NM
+        .replace(/<br\s*\/?>/gi, ', ')
+        .replace(/\(\d+\.?\d*g\)/g, ''); // g 제거
       document.getElementById('lunch-info').innerText = menu;
     } else {
       document.getElementById('lunch-info').innerText = "급식 정보 없음";
@@ -127,7 +149,7 @@ async function loadLunch() {
 }
 loadLunch();
 
-// 공지사항 표시
+// 공지사항
 const notices = [
   "과학 축제 안내 (9월 20일)",
   "방과후 수업 변경 공지",
