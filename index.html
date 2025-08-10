@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>8월의 싱그러운 2반 알리미 — v2.1</title>
+<title>8월의 싱그러운 2반 알리미 — Final</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
   :root {
@@ -13,7 +13,7 @@
     --muted: rgba(255,255,255,0.7);
     --card-bg: rgba(15,15,18,0.85);
     --safe-font: Pretendard, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', Arial;
-    --neon: 0 0 6px var(--main), 0 0 12px var(--main), 0 0 20px var(--main);
+    --neon: 0 0 6px var(--main), 0 0 12px var(--main);
   }
   *{box-sizing:border-box}
   body{
@@ -67,15 +67,6 @@
     box-shadow:var(--neon);
     font-size:14px;
   }
-  .class-pill{
-    font-weight:700;
-    color:var(--main);
-    background:rgba(255,51,153,0.08);
-    padding:6px 10px;
-    border-radius:8px;
-    margin-right:8px;
-    box-shadow:var(--neon);
-  }
   /* Layout */
   .layout{
     width:100%;
@@ -93,7 +84,7 @@
     border-radius:12px;
     padding:18px;
     border:1px solid var(--main);
-    box-shadow:var(--neon);
+    box-shadow:0 0 8px rgba(255,51,153,0.5);
   }
   .card h2{
     margin:0 0 12px;
@@ -116,13 +107,13 @@
   colgroup col:not(:first-child){width:calc((100% - 60px)/5);}
   th, td{
     border:1px solid var(--main);
-    text-shadow:var(--neon);
   }
   thead th{
     padding:10px;
     background:rgba(255,51,153,0.1);
     color:var(--main);
     font-weight:700;
+    text-shadow:var(--neon);
   }
   tbody td{
     padding:8px;
@@ -130,6 +121,8 @@
     height:64px;
     white-space:nowrap;
     font-weight:600;
+    color:#fff;
+    font-size:15px;
   }
   tbody td:first-child{
     background:rgba(255,255,255,0.05);
@@ -171,11 +164,11 @@
       <h1>8월의 싱그러운 2반 알리미</h1>
       <div class="brand-sub">한눈에 보는 시간표 · 급식 · 이번주 공지</div>
     </div>
-    <div class="designer">Designed by 황석현</div>
+    <div class="designer">Designed & Developed by HWANG SEOK HYUN</div>
   </div>
 
   <div class="info-strip">
-    <div><span class="class-pill">1학년 2반</span>충남과학고등학교 · 담임: 신미애</div>
+    <div>1학년 2반 충남과학고등학교 · 담임: 신미애</div>
     <div id="meta-right"></div>
   </div>
 
@@ -191,10 +184,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>물리</td><td>정보</td><td>정보</td><td>과제연구</td><td>생명과학</td></tr>
+            <tr><td>1</td><td>물리</td><td>물리</td><td>정보</td><td>과제연구</td><td>생명과학</td></tr>
             <tr><td>2</td><td>화학</td><td>체육</td><td>대수</td><td>과제연구</td><td>생명과학</td></tr>
-            <tr><td>3</td><td>대수</td><td>미적분</td><td>미적분</td><td>영어</td><td>지구과학</td></tr>
-            <tr><td>4</td><td>체육</td><td>국어</td><td>과제연구</td><td>정보</td><td>지구과학</td></tr>
+            <tr><td>3</td><td>대수</td><td>물리</td><td>미적분</td><td>영어</td><td>지구과학</td></tr>
+            <tr><td>4</td><td>체육</td><td>정보</td><td>과제연구</td><td>정보</td><td>지구과학</td></tr>
             <tr><td>5</td><td>영어</td><td>물리</td><td>창체</td><td>화학</td><td>물리</td></tr>
             <tr><td>6</td><td>지구과학</td><td>영어</td><td>창체</td><td>화학</td><td>생명과학</td></tr>
             <tr><td>7</td><td>미적분</td><td>대수</td><td>창체</td><td>국어</td><td>국어</td></tr>
