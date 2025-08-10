@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>3학년 2반 알리미</title>
+<title> 8월의 싱그러운 2반 알리미미</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
   :root {
@@ -14,19 +14,27 @@
     font-family: Pretendard, sans-serif;
     margin: 0;
     padding: 2rem;
-    text-align: center;
   }
-  h1 {
-    margin-bottom: 0.3rem;
+  /* 헤더 */
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .header-left h1 {
     font-size: 2rem;
+    margin: 0;
     color: var(--main-color);
     text-shadow: 0 0 15px var(--main-color);
+    text-align: left;
   }
-  .date-info {
-    font-size: 1.1rem;
+  .header-left .info {
+    font-size: 1rem;
     color: rgba(255,255,255,0.8);
-    margin-bottom: 2rem;
+    margin-top: 0.2rem;
   }
+  /* 카드 레이아웃 */
   .grid {
     display: grid;
     gap: 20px;
@@ -46,19 +54,27 @@
     margin-bottom: 0.5rem;
     text-shadow: 0 0 10px var(--main-color);
   }
+  /* 시간표 */
   table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
     color: #fff;
   }
   th, td {
-    padding: 8px;
-    text-align: center;
     border: 1px solid var(--main-color);
     text-shadow: 0 0 5px var(--main-color);
+    padding: 8px;
+    white-space: nowrap;
   }
   th {
     background: rgba(255, 51, 153, 0.2);
+    height: 50px;
+  }
+  tbody td {
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
   }
   ul {
     margin: 0;
@@ -72,12 +88,16 @@
 </head>
 <body>
 
-<h1>3학년 2반 알리미</h1>
-<div class="date-info" id="date-info">오늘 날짜: 불러오는 중...</div>
+<div class="header">
+  <div class="header-left">
+    <h1>3학년 2반 알리미</h1>
+    <div class="info" id="basic-info">정보 불러오는 중...</div>
+  </div>
+</div>
 
 <div class="grid">
   <!-- 주간 시간표 -->
-  <div class="card" id="timetable">
+  <div class="card">
     <h2>주간 시간표</h2>
     <table>
       <thead>
@@ -99,37 +119,42 @@
   </div>
 
   <!-- 오늘의 급식 -->
-  <div class="card" id="today-lunch">
+  <div class="card">
     <h2>오늘의 급식</h2>
     <div id="lunch-info">불러오는 중...</div>
   </div>
 
   <!-- 공지사항 -->
-  <div class="card" id="notice">
+  <div class="card">
     <h2>공지사항</h2>
     <ul id="notice-list"></ul>
   </div>
 </div>
 
 <script>
-// 오늘 날짜 구하기
-function setTodayInfo() {
+// 기본 정보
+function setBasicInfo() {
   const today = new Date();
-  const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-  document.getElementById('date-info').innerText = `오늘 날짜: ${today.toLocaleDateString('ko-KR', options)}`;
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+  const timeOptions = { hour: '2-digit', minute: '2-digit' };
+  const dateStr = today.toLocaleDateString('ko-KR', dateOptions);
+  const timeStr = today.toLocaleTimeString('ko-KR', timeOptions);
+  const className = "3학년 2반";
+  const teacher = "담임: 홍길동";
+  document.getElementById('basic-info').innerText = `${dateStr} | ${timeStr} | ${className} | ${teacher}`;
 }
-setTodayInfo();
+setBasicInfo();
 
-// 오늘의 급식 (NEIS API)
+// 급식 API
 async function loadLunch() {
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
   const date = `${yyyy}${mm}${dd}`;
-  const KEY = "YOUR_API_KEY"; // 네이스 API 키 입력
-  const ATPT = "C10"; // 충남교육청 코드
-  const SCHUL = "8140293"; // 충남과학고등학교 코드
+  const KEY = "YOUR_API_KEY"; // 네이스 API 키
+  const ATPT = "C10"; // 충남교육청
+  const SCHUL = "8140293"; // 충남과학고
   const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT}&SD_SCHUL_CODE=${SCHUL}&MLSV_YMD=${date}`;
 
   try {
@@ -138,31 +163,7 @@ async function loadLunch() {
     if (data.mealServiceDietInfo) {
       const menu = data.mealServiceDietInfo[1].row[0].DDISH_NM
         .replace(/<br\s*\/?>/gi, ', ')
-        .replace(/\(\d+\.?\d*g\)/g, ''); // g 제거
+        .replace(/\(\d+\.?\d*g\)/g, '');
       document.getElementById('lunch-info').innerText = menu;
     } else {
-      document.getElementById('lunch-info').innerText = "급식 정보 없음";
-    }
-  } catch (e) {
-    document.getElementById('lunch-info').innerText = "급식 정보를 불러올 수 없습니다.";
-  }
-}
-loadLunch();
-
-// 공지사항
-const notices = [
-  "과학 축제 안내 (9월 20일)",
-  "방과후 수업 변경 공지",
-  "시험 기간 귀마개 지원",
-  "동아리 발표회 참가 신청 안내"
-];
-const ul = document.querySelector('#notice-list');
-notices.forEach(n => {
-  const li = document.createElement('li');
-  li.innerText = n;
-  ul.appendChild(li);
-});
-</script>
-
-</body>
-</html>
+      document.getElementById('lunch-info').innerText = "급식 정보
