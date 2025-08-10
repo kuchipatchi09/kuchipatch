@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>8월의 싱그러운 2반 알리미 — v1.1</title>
+<title>8월의 싱그러운 2반 알리미 — v2.0</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
   :root {
@@ -12,14 +12,11 @@
     --main: #ff3399;
     --muted: rgba(255,255,255,0.72);
     --card-bg: rgba(15,15,18,0.85);
-    --glass: rgba(255,255,255,0.03);
     --safe-font: Pretendard, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', Arial;
   }
   *{box-sizing:border-box}
-  html,body{height:100%}
   body{
     margin:0;
-    min-height:100%;
     background:linear-gradient(180deg,var(--bg1),var(--bg2));
     color:#fff;
     font-family:var(--safe-font);
@@ -35,7 +32,7 @@
     max-width:1200px;
     display:flex;
     justify-content:space-between;
-    align-items:flex-end;
+    align-items:flex-start;
   }
   h1{
     margin:0;
@@ -43,18 +40,17 @@
     color:var(--main);
     text-shadow:0 0 12px rgba(255,51,153,0.18);
   }
-  .vtag{
-    font-size:11px;
-    color:var(--muted);
-    padding:4px 8px;
-    border-radius:999px;
-    background:rgba(255,255,255,0.02);
-    margin-left:6px;
-  }
   .brand-sub{
     margin-top:6px;
     color:var(--muted);
     font-size:13px;
+  }
+  .designer{
+    font-size:12px;
+    color:var(--muted);
+    background:rgba(255,255,255,0.05);
+    padding:4px 8px;
+    border-radius:6px;
   }
   /* Info bar */
   .info-strip{
@@ -163,9 +159,10 @@
 <body>
   <div class="topbar">
     <div>
-      <h1>8월의 싱그러운 2반 알리미 <span class="vtag">v1.1</span></h1>
+      <h1>8월의 싱그러운 2반 알리미</h1>
       <div class="brand-sub">한눈에 보는 시간표 · 급식 · 이번주 공지</div>
     </div>
+    <div class="designer">Designed by 황석현</div>
   </div>
 
   <div class="info-strip">
@@ -211,6 +208,7 @@
   </main>
 
 <script>
+// 날짜/시간 업데이트
 function updateMeta(){
   const now=new Date();
   const dateStr=now.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
@@ -220,14 +218,14 @@ function updateMeta(){
 updateMeta();
 setInterval(updateMeta,60000);
 
-// 급식 API (NEIS)
+// 급식 API
 async function loadLunch(){
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
   const date = `${yyyy}${mm}${dd}`;
-  const KEY = "YOUR_API_KEY";
+  const KEY = "YOUR_API_KEY"; // API키 넣기
   const ATPT = "C10";
   const SCHUL = "8140293";
   const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT}&SD_SCHUL_CODE=${SCHUL}&MLSV_YMD=${date}`;
@@ -244,7 +242,7 @@ async function loadLunch(){
 }
 loadLunch();
 
-// 공지사항 데이터
+// 공지사항
 const notices=[
   {date:"8/12",text:"8월 단사 촬영"},
   {date:"8/13",text:"학생회장선거"},
