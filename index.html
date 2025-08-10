@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>8월의 싱그러운 2반 알리미 — v2.0</title>
+<title>8월의 싱그러운 2반 알리미 — v2.1</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
   :root {
     --bg1: #000;
     --bg2: #111;
     --main: #ff3399;
-    --muted: rgba(255,255,255,0.72);
+    --muted: rgba(255,255,255,0.7);
     --card-bg: rgba(15,15,18,0.85);
     --safe-font: Pretendard, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', Arial;
+    --neon: 0 0 6px var(--main), 0 0 12px var(--main), 0 0 20px var(--main);
   }
   *{box-sizing:border-box}
   body{
@@ -38,7 +39,7 @@
     margin:0;
     font-size:28px;
     color:var(--main);
-    text-shadow:0 0 12px rgba(255,51,153,0.18);
+    text-shadow:var(--neon);
   }
   .brand-sub{
     margin-top:6px;
@@ -51,6 +52,7 @@
     background:rgba(255,255,255,0.05);
     padding:4px 8px;
     border-radius:6px;
+    box-shadow:var(--neon);
   }
   /* Info bar */
   .info-strip{
@@ -61,16 +63,18 @@
     padding:10px 16px;
     display:flex;
     justify-content:space-between;
-    border:1px solid rgba(255,51,153,0.05);
+    border:1px solid var(--main);
+    box-shadow:var(--neon);
     font-size:14px;
   }
   .class-pill{
     font-weight:700;
     color:var(--main);
-    background:rgba(255,51,153,0.06);
+    background:rgba(255,51,153,0.08);
     padding:6px 10px;
     border-radius:8px;
     margin-right:8px;
+    box-shadow:var(--neon);
   }
   /* Layout */
   .layout{
@@ -88,14 +92,16 @@
     background:var(--card-bg);
     border-radius:12px;
     padding:18px;
-    border:1px solid rgba(255,51,153,0.05);
+    border:1px solid var(--main);
+    box-shadow:var(--neon);
   }
   .card h2{
     margin:0 0 12px;
     color:var(--main);
     font-size:16px;
     padding-bottom:6px;
-    border-bottom:1px solid rgba(255,51,153,0.15);
+    border-bottom:1px solid rgba(255,51,153,0.4);
+    text-shadow:var(--neon);
   }
   /* Timetable */
   .table-wrap{overflow:auto;}
@@ -108,23 +114,25 @@
   }
   colgroup col:first-child{width:60px;}
   colgroup col:not(:first-child){width:calc((100% - 60px)/5);}
+  th, td{
+    border:1px solid var(--main);
+    text-shadow:var(--neon);
+  }
   thead th{
     padding:10px;
-    background:rgba(255,51,153,0.06);
-    border:1px solid rgba(255,51,153,0.12);
+    background:rgba(255,51,153,0.1);
     color:var(--main);
     font-weight:700;
   }
   tbody td{
     padding:8px;
-    border:1px solid rgba(255,51,153,0.08);
     text-align:center;
     height:64px;
     white-space:nowrap;
     font-weight:600;
   }
   tbody td:first-child{
-    background:rgba(255,255,255,0.02);
+    background:rgba(255,255,255,0.05);
     color:var(--muted);
     font-weight:700;
   }
@@ -152,6 +160,7 @@
     font-weight:700;
     color:var(--main);
     min-width:66px;
+    text-shadow:var(--neon);
   }
   .notice-text{color:#fff; font-size:14px;}
 </style>
@@ -225,12 +234,11 @@ async function loadLunch(){
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
   const date = `${yyyy}${mm}${dd}`;
-  const KEY = "YOUR_API_KEY"; // API키 넣기
+  const KEY = "1c64f9895620476998eefa8f28b3ca0a"; 
   const ATPT = "C10";
   const SCHUL = "8140293";
   const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT}&SD_SCHUL_CODE=${SCHUL}&MLSV_YMD=${date}`;
   const el=document.getElementById('lunch-info');
-  if(KEY==="YOUR_API_KEY"){el.innerHTML="<span style='color:var(--muted)'>API 키를 설정해주세요</span>";return;}
   try{
     const res=await fetch(url);
     const data=await res.json();
