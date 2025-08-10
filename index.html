@@ -1,175 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>2025 충남과학고등학교 학생회장선거</title>
-    <meta charset="utf-8">
-    <!-- Pretendard & BR Cobane -->
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/br-cobane" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 100vh;
-        }
-
-        h1 {
-            font-family: 'BR Cobane', sans-serif;
-            font-size: 70px;
-            letter-spacing: 4px;
-            margin: 40px 0 10px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.6);
-            text-align: center;
-        }
-
-        .subtitle {
-            font-family: 'Pretendard', sans-serif;
-            font-size: 18px;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 50px;
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            display: block;
-            position: relative;
-            background-color: rgba(20,20,20,0.9);
-            border-radius: 20px;
-            width: 220px;
-            height: 270px;
-            padding: 20px;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-            font-family: 'Pretendard', sans-serif;
-            text-decoration: none;
-            color: inherit;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.05);
-        }
-
-        .number {
-            position: absolute;
-            bottom: 15px;
-            left: 20px;
-            font-size: 150px;
-            font-weight: 900;
-            font-family: 'BR Cobane', sans-serif;
-            opacity: 0.8;
-            transition: text-shadow 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-
-        .card:hover .number {
-            text-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.03); }
-        }
-
-        .names {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            text-align: right;
-        }
-
-        .names p {
-            font-size: 30px;
-            font-weight: 600;
-            margin: 5px 0;
-            transition: text-shadow 0.3s ease, color 0.3s ease;
-        }
-
-        .card:hover .names p {
-            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
-        }
-
-        /* 색상별 스타일 */
-        .blue { border: 2px solid rgb(0,122,255); box-shadow: 0 0 20px rgba(0,122,255,0.5); color: rgb(0,122,255); }
-        .blue:hover { box-shadow: 0 0 30px rgba(0,122,255,0.8); }
-        .red { border: 2px solid rgb(255,50,50); box-shadow: 0 0 20px rgba(255,50,50,0.5); color: rgb(255,50,50); }
-        .red:hover { box-shadow: 0 0 30px rgba(255,50,50,0.8); }
-        .yellow { border: 2px solid rgb(255,215,0); box-shadow: 0 0 20px rgba(255,215,0,0.5); color: rgb(255,215,0); }
-        .yellow:hover { box-shadow: 0 0 30px rgba(255,215,0,0.8); }
-        .green { border: 2px solid rgb(0,255,128); box-shadow: 0 0 20px rgba(0,255,128,0.5); color: rgb(0,255,128); }
-        .green:hover { box-shadow: 0 0 30px rgba(0,255,128,0.8); }
-        .orange { border: 2px solid rgb(255,140,0); box-shadow: 0 0 20px rgba(255,140,0,0.5); color: rgb(255,140,0); }
-        .orange:hover { box-shadow: 0 0 30px rgba(255,140,0,0.8); }
-
-        .footer {
-            font-family: 'Pretendard', sans-serif;
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
-            padding: 15px 0;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            text-align: center;
-            width: 100%;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>3학년 2반 알리미</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  body {
+    background: linear-gradient(180deg, #000, #111);
+    color: #fff;
+    font-family: Pretendard, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #ffa500;
+  }
+  .grid {
+    display: grid;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .card {
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: left;
+  }
+  .card h2 {
+    color: #ffa500;
+    margin-bottom: 0.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+  }
+  th, td {
+    padding: 6px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    margin-bottom: 0.4rem;
+  }
+</style>
 </head>
 <body>
-    <h1>2025 충남과학고등학교 학생회장선거</h1>
-    <p class="subtitle">카드를 클릭하면 후보별 공약과 소개를 볼 수 있습니다</p>
 
-    <div class="container">
-        <a href="no1.html" class="card blue">
-            <div class="number">1</div>
-            <div class="names">
-                <p>이재원</p>
-                <p>이재형</p>
-            </div>
-        </a>
-        <a href="no2.html" class="card red">
-            <div class="number">2</div>
-            <div class="names">
-                <p>유현규</p>
-                <p>김지후</p>
-            </div>
-        </a>
-        <a href="no3.html" class="card yellow">
-            <div class="number">3</div>
-            <div class="names">
-                <p>김시은</p>
-                <p>박주언</p>
-            </div>
-        </a>
-        <a href="no4.html" class="card green">
-            <div class="number">4</div>
-            <div class="names">
-                <p>이주호</p>
-                <p>김도윤</p>
-            </div>
-        </a>
-        <a href="no5.html" class="card orange">
-            <div class="number">5</div>
-            <div class="names">
-                <p>장윤호</p>
-                <p>임영석</p>
-            </div>
-        </a>
-    </div>
+<h1>3학년 2반 알리미</h1>
 
-    <div class="footer">
-        Designed by Q-PI's HWANG SEOK HYUN
-    </div>
+<div class="grid">
+  <!-- 주간 시간표 -->
+  <div class="card" id="timetable">
+    <h2>주간 시간표</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>요일</th>
+          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>월</td><td>수학</td><td>물리</td><td>영어</td><td>화학</td><td>국어</td><td>정보</td><td>자율</td></tr>
+        <tr><td>화</td><td>국어</td><td>수학</td><td>지구과학</td><td>영어</td><td>체육</td><td>화학</td><td>창체</td></tr>
+        <tr><td>수</td><td>물리</td><td>국어</td><td>수학</td><td>영어</td><td>미술</td><td>자율</td><td>진로</td></tr>
+        <tr><td>목</td><td>지구과학</td><td>영어</td><td>체육</td><td>국어</td><td>수학</td><td>물리</td><td>화학</td></tr>
+        <tr><td>금</td><td>국어</td><td>수학</td><td>영어</td><td>물리</td><td>음악</td><td>지구과학</td><td>창체</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 오늘의 급식 -->
+  <div class="card" id="today-lunch">
+    <h2>오늘의 급식</h2>
+    <div id="lunch-info">불러오는 중...</div>
+  </div>
+
+  <!-- 공지사항 -->
+  <div class="card" id="notice">
+    <h2>공지사항</h2>
+    <ul id="notice-list"></ul>
+  </div>
+</div>
+
+<script>
+// 오늘 날짜 구하기
+function getToday() {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  return `${yyyy}${mm}${dd}`;
+}
+
+// 오늘의 급식 (NEIS API)
+async function loadLunch() {
+  const date = getToday();
+  const KEY = "YOUR_API_KEY"; // 네이스 API 키 입력
+  const ATPT = "C10"; // 충남교육청 코드
+  const SCHUL = "8140293"; // 충남과학고등학교 코드
+  const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT}&SD_SCHUL_CODE=${SCHUL}&MLSV_YMD=${date}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.mealServiceDietInfo) {
+      const menu = data.mealServiceDietInfo[1].row[0].DDISH_NM.replace(/<br\s*\/?>/gi, ', ');
+      document.getElementById('lunch-info').innerText = menu;
+    } else {
+      document.getElementById('lunch-info').innerText = "급식 정보 없음";
+    }
+  } catch (e) {
+    document.getElementById('lunch-info').innerText = "급식 정보를 불러올 수 없습니다.";
+  }
+}
+loadLunch();
+
+// 공지사항 표시
+const notices = [
+  "과학 축제 안내 (9월 20일)",
+  "방과후 수업 변경 공지",
+  "시험 기간 귀마개 지원",
+  "동아리 발표회 참가 신청 안내"
+];
+const ul = document.querySelector('#notice-list');
+notices.forEach(n => {
+  const li = document.createElement('li');
+  li.innerText = n;
+  ul.appendChild(li);
+});
+</script>
+
 </body>
 </html>
