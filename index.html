@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title> 8월의 싱그러운 2반 알리미미</title>
+<title> 8월의 싱그러운 2반 알리미</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
   :root {
@@ -27,70 +27,7 @@
     margin: 0;
     color: var(--main-color);
     text-shadow: 0 0 15px var(--main-color);
-    text-align: left;
-  }
-  .header-left .info {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.8);
-    margin-top: 0.2rem;
-  }
-  /* 카드 레이아웃 */
-  .grid {
-    display: grid;
-    gap: 20px;
-    max-width: 1200px;
-    margin: auto;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  }
-  .card {
-    background: rgba(20, 20, 20, 0.9);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 0 15px var(--main-color);
-    text-align: left;
-  }
-  .card h2 {
-    color: var(--main-color);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px var(--main-color);
-  }
-  /* 시간표 */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    color: #fff;
-  }
-  th, td {
-    border: 1px solid var(--main-color);
-    text-shadow: 0 0 5px var(--main-color);
-    padding: 8px;
-    white-space: nowrap;
-  }
-  th {
-    background: rgba(255, 51, 153, 0.2);
-    height: 50px;
-  }
-  tbody td {
-    height: 60px;
-    text-align: center;
-    vertical-align: middle;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  li {
-    margin-bottom: 0.4rem;
-  }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <div class="header-left">
-    <h1>3학년 2반 알리미</h1>
+   운 2반 알리미</h1>
     <div class="info" id="basic-info">정보 불러오는 중...</div>
   </div>
 </div>
@@ -107,12 +44,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>물리</td><td>정보</td><td>정보</td><td>과제연구</td><td>생명과학</td></tr>
-        <tr><td>2</td><td>화학</td><td>체육</td><td>대수</td><td>과제연구</td><td>생명과학</td></tr>
-        <tr><td>3</td><td>대수</td><td>미적분</td><td>미적분</td><td>영어</td><td>지구과학</td></tr>
-        <tr><td>4</td><td>체육</td><td>국어</td><td>과제연구</td><td>정보</td><td>지구과학</td></tr>
+        <tr><td>1</td><td>물리</td><td>정보</td><td>정보</td><td>과제<br>연구</td><td>생명<br>과학</td></tr>
+        <tr><td>2</td><td>화학</td><td>체육</td><td>대수</td><td>과제<br>연구</td><td>생명<br>과학</td></tr>
+        <tr><td>3</td><td>대수</td><td>미적분</td><td>미적분</td><td>영어</td><td>지구<br>과학</td></tr>
+        <tr><td>4</td><td>체육</td><td>국어</td><td>과제<br>연구</td><td>정보</td><td>지구<br>과학</td></tr>
         <tr><td>5</td><td>영어</td><td>물리</td><td>창체</td><td>화학</td><td>물리</td></tr>
-        <tr><td>6</td><td>지구과학</td><td>영어</td><td>창체</td><td>화학</td><td>생명과학</td></tr>
+        <tr><td>6</td><td>지구<br>과학</td><td>영어</td><td>창체</td><td>화학</td><td>생명<br>과학</td></tr>
         <tr><td>7</td><td>미적분</td><td>대수</td><td>창체</td><td>국어</td><td>국어</td></tr>
       </tbody>
     </table>
@@ -139,8 +76,8 @@ function setBasicInfo() {
   const timeOptions = { hour: '2-digit', minute: '2-digit' };
   const dateStr = today.toLocaleDateString('ko-KR', dateOptions);
   const timeStr = today.toLocaleTimeString('ko-KR', timeOptions);
-  const className = "3학년 2반";
-  const teacher = "담임: 홍길동";
+  const className = "1학년 2반";
+  const teacher = "담임: 신미애"
   document.getElementById('basic-info').innerText = `${dateStr} | ${timeStr} | ${className} | ${teacher}`;
 }
 setBasicInfo();
@@ -167,3 +104,4 @@ async function loadLunch() {
       document.getElementById('lunch-info').innerText = menu;
     } else {
       document.getElementById('lunch-info').innerText = "급식 정보
+
