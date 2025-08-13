@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>8월의 싱그러운 2반 알리미 — Final</title>
+<title>8월의 아픈 2반 알리미</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
   :root {
@@ -27,7 +27,6 @@
     align-items:center;
     gap:18px;
   }
-  /* Header */
   .topbar{
     width:100%;
     max-width:1200px;
@@ -54,7 +53,6 @@
     border-radius:6px;
     box-shadow:var(--neon);
   }
-  /* Info bar */
   .info-strip{
     width:100%;
     max-width:1200px;
@@ -67,7 +65,6 @@
     box-shadow:var(--neon);
     font-size:14px;
   }
-  /* Layout */
   .layout{
     width:100%;
     max-width:1200px;
@@ -78,7 +75,6 @@
   @media (max-width:980px){
     .layout{grid-template-columns:1fr;}
   }
-  /* Card */
   .card{
     background:var(--card-bg);
     border-radius:12px;
@@ -94,7 +90,6 @@
     border-bottom:1px solid rgba(255,51,153,0.4);
     text-shadow:var(--neon);
   }
-  /* Timetable */
   .table-wrap{overflow:auto;}
   table.timetable{
     width:100%;
@@ -105,9 +100,7 @@
   }
   colgroup col:first-child{width:60px;}
   colgroup col:not(:first-child){width:calc((100% - 60px)/5);}
-  th, td{
-    border:1px solid var(--main);
-  }
+  th, td{border:1px solid var(--main);}
   thead th{
     padding:10px;
     background:rgba(255,51,153,0.1);
@@ -129,7 +122,6 @@
     color:var(--muted);
     font-weight:700;
   }
-  /* Notices */
   .notice-list{
     list-style:none;
     padding:0;
@@ -156,6 +148,22 @@
     text-shadow:var(--neon);
   }
   .notice-text{color:#fff; font-size:14px;}
+  /* 급식표 스타일 */
+  table.meal-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+  table.meal-table th, table.meal-table td{
+    border:1px solid var(--main);
+    padding:8px;
+    text-align:left;
+  }
+  table.meal-table th{
+    background:rgba(255,51,153,0.1);
+    color:var(--main);
+    text-shadow:var(--neon);
+  }
 </style>
 </head>
 <body>
@@ -184,11 +192,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>물리</td><td>물리</td><td>정보</td><td>과제연구</td><td>생명과학</td></tr>
+            <tr><td>1</td><td>물리</td><td>정보</td><td>정보</td><td>과제연구</td><td>생명과학</td></tr>
             <tr><td>2</td><td>화학</td><td>체육</td><td>대수</td><td>과제연구</td><td>생명과학</td></tr>
             <tr><td>3</td><td>대수</td><td>물리</td><td>미적분</td><td>영어</td><td>지구과학</td></tr>
             <tr><td>4</td><td>체육</td><td>정보</td><td>과제연구</td><td>정보</td><td>지구과학</td></tr>
-            <tr><td>5</td><td>영어</td><td>물리</td><td>창체</td><td>화학</td><td>물리</td></tr>
+            <tr><td>5</td><td>영어</td><td>국어</td><td>창체</td><td>화학</td><td>물리</td></tr>
             <tr><td>6</td><td>지구과학</td><td>영어</td><td>창체</td><td>화학</td><td>생명과학</td></tr>
             <tr><td>7</td><td>미적분</td><td>대수</td><td>창체</td><td>국어</td><td>국어</td></tr>
           </tbody>
@@ -199,7 +207,11 @@
     <aside>
       <section class="card">
         <h2>오늘의 급식</h2>
-        <div id="lunch-info">불러오는 중...</div>
+        <table class="meal-table">
+          <tr><th>조식</th><td id="breakfast"></td></tr>
+          <tr><th>중식</th><td id="lunch"></td></tr>
+          <tr><th>석식</th><td id="dinner"></td></tr>
+        </table>
       </section>
 
       <section class="card" style="margin-top:18px;">
@@ -210,7 +222,6 @@
   </main>
 
 <script>
-// 날짜/시간 업데이트
 function updateMeta(){
   const now=new Date();
   const dateStr=now.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
@@ -220,35 +231,33 @@ function updateMeta(){
 updateMeta();
 setInterval(updateMeta,60000);
 
-// 급식 API
-async function loadLunch(){
+// 급식 데이터 예시
+const mealData = {
+  "2025-08-12": {조식:"쌀밥, 미역국, 계란후라이, 김치", 중식:"잡곡밥, 김치찌개, 제육볶음, 오이무침, 배추김치", 석식:"흑미밥, 된장국, 닭갈비, 시금치나물, 깍두기"},
+  "2025-08-13": {조식:"토스트, 우유, 계란스크램블, 샐러드", 중식:"비빔밥, 콩나물국, 고등어구이, 시금치나물, 김치", 석식:"잡곡밥, 순두부찌개, 탕수육, 단무지, 포도"},
+  "2025-08-14": {조식:"호밀빵, 수프, 베이컨, 과일샐러드", 중식:"돈까스, 카레라이스, 단무지, 샐러드", 석식:"쌀밥, 김치찌개, 불고기, 잡채, 배추김치"}
+};
+
+function loadMeals(){
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
-  const date = `${yyyy}${mm}${dd}`;
-  const KEY = "1c64f9895620476998eefa8f28b3ca0a"; 
-  const ATPT = "C10";
-  const SCHUL = "8140293";
-  const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT}&SD_SCHUL_CODE=${SCHUL}&MLSV_YMD=${date}`;
-  const el=document.getElementById('lunch-info');
-  try{
-    const res=await fetch(url);
-    const data=await res.json();
-    if(data.mealServiceDietInfo){
-      const menu=data.mealServiceDietInfo[1].row[0].DDISH_NM.replace(/<br\s*\/?>/gi, ', ').replace(/\(\d+\.?\d*g\)/g,'');
-      el.textContent=menu;
-    }else{el.textContent="급식 정보 없음";}
-  }catch{el.textContent="불러오기 실패";}
+  const key = `${yyyy}-${mm}-${dd}`;
+  const meal = mealData[key];
+
+  document.getElementById('breakfast').textContent = meal ? meal.조식 : '급식 정보 없음';
+  document.getElementById('lunch').textContent = meal ? meal.중식 : '급식 정보 없음';
+  document.getElementById('dinner').textContent = meal ? meal.석식 : '급식 정보 없음';
 }
-loadLunch();
+loadMeals();
 
 // 공지사항
 const notices=[
-  {date:"8/12",text:"8월 단사 촬영"},
-  {date:"8/13",text:"학생회장선거"},
-  {date:"8/13",text:"아인슈타인-피카소 오디세이 제출 마감"},
-  {date:"8/14",text:"배구 대항전 (점심 시간)"}
+  {date:"8/18",text:"배구 대항전(vs 3-1)"},
+  {date:"8/15",text:"광복절"},
+  {date:"다음주 중",text:"R&E 중간보고서"},
+  {date:"다음주 중",text:"두번째 대수 과제 제출"}
 ];
 const list=document.getElementById('notice-list');
 notices.forEach(n=>{
