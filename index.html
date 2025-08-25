@@ -1,133 +1,49 @@
+<!-- 최현수 팬페이지 HTML/CSS 최종버전 (두 섹션으로 나눔) -->
+
+<!-- ==================== SECTION 1: HEADER & HERO ==================== -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>최현수 Fan Page · 1학년 2반의 자랑</title>
-  <meta name="description" content="엄밀함을 사랑하는 다재다능한 최현수 — 물리 전교 1등, 수학 잘함, 1학년 2반 & 환서중학교의 자랑." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>최현수 Fan Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0d1224;
-      --card: #161c35;
-      --muted: #7c88c7;
-      --text: #e6ecff;
-      --sub: #c4cff7;
-      --accent: #4dbfff;
-      --glass: rgba(255,255,255,.05);
-      --shadow: 0 8px 24px rgba(0,0,0,.3);
-      --radius: 16px;
+      --bg: #0b1020; --card: #0f162f; --text: #e6ecff;
+      --sub: #c4cff7; --muted: #9fb0ff; --accent: linear-gradient(90deg,#7c5cff,#4dbfff 60%,#43ffd3 100%);
+      --glass: rgba(255,255,255,.06); --shadow: 0 10px 30px rgba(0,0,0,.3); --radius: 18px;
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: "Pretendard", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1100px, 92%); margin: 0 auto; }
-
-    header {
-      position: sticky; top: 0; z-index: 40;
-      backdrop-filter: blur(8px);
-      background: rgba(13,18,36,.9);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
-    .logo { display:flex; align-items:center; gap:10px; }
-    .logo-badge {
-      width: 34px; height: 34px; border-radius: 8px;
-      background: var(--accent);
-    }
-    .brand { font-weight: 800; letter-spacing: .4px; }
-    .chip { padding: 6px 10px; border-radius: 999px; background: var(--glass); font-size: 13px; color: var(--sub); }
-    .theme-toggle { border:0; background:transparent; color:var(--sub); cursor:pointer; font-weight:600; }
-
-    .hero { padding: 70px 0; }
-    .hero-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items:center; }
-    .title { font-size: clamp(28px, 6vw, 52px); line-height: 1.2; margin: 0 0 10px; font-weight: 900; }
-    .title b { color: var(--accent); }
-    .subtitle { margin: 8px 0 16px; color: var(--sub); font-size: clamp(15px, 2vw, 18px); }
-    .badges { display:flex; flex-wrap:wrap; gap:8px; margin-top: 14px; }
-    .badge { padding: 8px 12px; border-radius: 999px; background: var(--glass); font-size: 13px; color: var(--muted); }
-    .cta { display:flex; gap:10px; margin-top: 20px; }
-    .btn { padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: #1b223d; color: var(--text); font-weight: 600; transition: .2s ease; }
-    .btn:hover { background: var(--accent); color: #0c1126; }
-    .btn.primary { background: var(--accent); color: #0c1126; border-color: transparent; }
-
-    .portrait-card {
-      border-radius: var(--radius); background: var(--card); border: 1px solid rgba(255,255,255,.08);
-      min-height: 300px; display:grid; place-items:center; box-shadow: var(--shadow);
-    }
-    .portrait {
-      width: 70%; max-width: 320px; aspect-ratio: 1/1; border-radius: 20px;
-      background: url('https://dummyimage.com/800x800/0e163a/ffffff&text=HYUNSOO') center/cover no-repeat;
-      border: 1px solid rgba(255,255,255,.1);
-    }
-
-    .section { padding: 50px 0; }
-    .section h2 { font-size: clamp(22px, 3.4vw, 28px); margin: 0 0 14px; }
-    .muted { color: var(--sub); font-size: 15px; }
-    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-
-    .card { grid-column: span 4; border-radius: var(--radius); background: var(--card); border: 1px solid rgba(255,255,255,.08); padding: 16px; transition: .2s ease; }
-    .card:hover { transform: translateY(-3px); }
-    .card .big { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin: 6px 0; }
-
-    .timeline { grid-column: span 8; border-radius: var(--radius); background: var(--card); border: 1px solid rgba(255,255,255,.08); padding: 18px; }
-    .event { display:grid; grid-template-columns: 100px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .event:last-child { border-bottom: none; }
-    .event .when { color: var(--muted); font-size: 13px; }
-    .event .what { font-weight: 700; }
-
-    .quote { grid-column: span 4; border-radius: var(--radius); background: var(--card); border: 1px solid rgba(255,255,255,.12); padding: 20px; }
-    .quote p { font-size: 18px; margin: 0 0 10px; font-weight: 600; }
-    .quote .by { color: var(--sub); font-size: 14px; }
-
-    .gallery { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .shot { border-radius: 12px; overflow:hidden; border: 1px solid rgba(255,255,255,.1); aspect-ratio: 4/3; background: #101a3f; }
-
-    footer { padding: 30px 0 50px; color: #b7c2ff; font-size: 14px; }
-    .footer-wrap { display:flex; flex-wrap:wrap; gap: 10px; align-items:center; justify-content:space-between; }
-
-    @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .card { grid-column: span 6; }
-      .timeline { grid-column: span 12; }
-      .quote { grid-column: span 12; }
-    }
-    @media (max-width: 640px) {
-      .card { grid-column: span 12; }
-      .gallery { grid-template-columns: 1fr 1fr; }
-    }
-
-    .light {
-      --bg: #f7f9ff;
-      --card: #ffffff;
-      --text: #0e122a;
-      --sub: #515a7a;
-      --muted: #5a6bff;
-      --glass: rgba(8,18,53,.05);
-      --shadow: 0 8px 20px rgba(14,18,42,.1);
-    }
+    * { box-sizing:border-box; } body { margin:0; font-family:'Pretendard',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    a{color:inherit;text-decoration:none;}
+    .container { width:min(1100px,92%); margin:0 auto; }
+    header{position:sticky;top:0;backdrop-filter:blur(10px);background:linear-gradient(to bottom,rgba(10,15,36,.85),rgba(10,15,36,.55));border-bottom:1px solid rgba(255,255,255,.06);}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+    .logo{display:flex;align-items:center;gap:12px;}
+    .logo-badge{width:36px;height:36px;border-radius:12px;background:var(--accent);}
+    .brand{font-weight:800;letter-spacing:.4px;}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,.08);font-size:12px;color:var(--sub);}
+    .theme-toggle{border:0;background:transparent;color:var(--sub);cursor:pointer;font-weight:600;}
+    .hero{padding:60px 0;}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;}
+    .title{font-size:clamp(26px,5vw,48px);line-height:1.1;margin:0 0 12px;font-weight:900;}
+    .title b{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .subtitle{margin:6px 0 20px;color:var(--sub);font-size:clamp(14px,2vw,16px);}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+    .badge{padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,.08);font-size:12px;color:var(--muted);}
+    .cta{display:flex;gap:12px;margin-top:20px;}
+    .btn{padding:12px 16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:#ffffff0b;color:var(--text);font-weight:700;letter-spacing:.3px;box-shadow:var(--shadow);transition:.25s ease;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn.primary{background:var(--accent);color:#0c1126;border-color:transparent;}
+    .portrait-card{border-radius:var(--radius);background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);min-height:320px;display:grid;place-items:center;box-shadow:var(--shadow);}
+    .portrait{width:70%;max-width:360px;aspect-ratio:1/1;border-radius:24px;border:1px solid rgba(255,255,255,.12);background:url('https://dummyimage.com/800x800/0e163a/ffffff&text=HYUNSOO') center/cover no-repeat;}
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="logo">
-        <span class="logo-badge" aria-hidden></span>
-        <div>
-          <div class="brand">Choi Hyunsoo</div>
-          <div class="chip">엄밀함 · 다재다능 · 잘생김</div>
-        </div>
-      </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">🌗 테마</button>
+      <div class="logo"><span class="logo-badge"></span><div><div class="brand">Choi Hyunsoo</div><div class="chip">엄밀함 · 다재다능 · 잘생김</div></div></div>
+      <button class="theme-toggle">🌗 테마</button>
     </div>
   </header>
 
@@ -136,12 +52,12 @@
       <div class="hero-grid">
         <div>
           <h1 class="title">1학년 2반의 자랑, <b>최현수</b></h1>
-          <p class="subtitle">엄밀함을 사랑하는 두뇌와 감각으로 문제를 해부하는 학생. 물리 <b>전교 1등</b>의 저력과, 수학에서 보여주는 <b>정교한 논리</b>. 환서중학교의 자랑에서 이어진 신뢰는 계속됩니다.</p>
+          <p class="subtitle">엄밀함을 사랑하는 두뇌와 감각으로 문제를 해부하는 학생. 물리 <b>전교 1등</b>의 저력과 수학에서 보여주는 <b>정교한 논리</b>.</p>
           <div class="badges">
             <span class="badge">#엄밀함</span>
             <span class="badge">#물리 전교 1등</span>
             <span class="badge">#1학년 2반의 자랑</span>
-            <span class="badge">#환서중학교의 자랑</span>
+            <span class="badge">#환서중학교</span>
             <span class="badge">#수학 천재</span>
             <span class="badge">#다재다능</span>
           </div>
@@ -151,83 +67,50 @@
           </div>
         </div>
         <div>
-          <div class="portrait-card">
-            <div class="portrait" role="img" aria-label="최현수를 상징하는 이미지"></div>
-          </div>
+          <div class="portrait-card"><div class="portrait"></div></div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
+<!-- ==================== SECTION 2: ABOUT, TIMELINE & GALLERY ==================== -->
+    <section id="about" style="padding:50px 0;">
       <h2>하이라이트</h2>
-      <p class="muted">숫자가 말해주는 최현수의 강점</p>
-      <div class="grid" style="margin-top: 14px;">
-        <div class="card">
-          <div class="big">물리 전교 1등</div>
-          <div class="desc">정확한 개념과 논리 전개로 기말고사 물리 1위를 달성.</div>
+      <p style="color:#c4cff7;font-size:14px;">숫자가 말해주는 최현수의 강점</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;">
+        <div style="background:var(--card);padding:16px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);">
+          <div style="font-size:24px;font-weight:800;margin-bottom:6px;">물리 전교 1등</div>
+          <div style="color:var(--sub);font-size:13px;">정확한 개념과 논리 전개로 기말고사 물리 1위</div>
         </div>
-        <div class="card">
-          <div class="big">수학 천재</div>
-          <div class="desc">추상화 능력과 증명 지향적 접근으로 문제를 구조화.</div>
+        <div style="background:var(--card);padding:16px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);">
+          <div style="font-size:24px;font-weight:800;margin-bottom:6px;">수학 천재</div>
+          <div style="color:var(--sub);font-size:13px;">추상화 능력과 증명 지향적 접근</div>
         </div>
-        <div class="card">
-          <div class="big">다재다능</div>
-          <div class="desc">팀워크와 리더십을 갖춘 1학년 2반의 자랑.</div>
+        <div style="background:var(--card);padding:16px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);">
+          <div style="font-size:24px;font-weight:800;margin-bottom:6px;">다재다능</div>
+          <div style="color:var(--sub);font-size:13px;">팀워크와 리더십까지 갖춘 학생</div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="grid">
-        <div class="timeline">
-          <h2>타임라인</h2>
-          <div class="event">
-            <div class="when">중학교</div>
-            <div>
-              <div class="what">환서중학교의 자랑</div>
-              <div class="detail">기초 과학/수학에서 우수한 성과. 프로젝트 리더 경험.</div>
-            </div>
-          </div>
-          <div class="event">
-            <div class="when">고1 · 기말</div>
-            <div>
-              <div class="what">물리 전교 1등</div>
-              <div class="detail">벡터/역학 파트에서 고난도 문항 완벽 해결.</div>
-            </div>
-          </div>
-        </div>
-        <aside class="quote">
-          <p>“증명부터 계산까지 일관된 엄밀함. 팀이 믿고 따르는 학생.”</p>
-          <div class="by">— 동료/선생님 평가</div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="gallery" class="section">
+    <section id="gallery" style="padding:50px 0;">
       <h2>갤러리</h2>
-      <div class="gallery">
-        <div class="shot" style="background:url('https://dummyimage.com/800x600/121a46/e6ecff&text=Physics+Note') center/cover no-repeat"></div>
-        <div class="shot" style="background:url('https://dummyimage.com/800x600/0f1a3a/e6ecff&text=Math+Proof') center/cover no-repeat"></div>
-        <div class="shot" style="background:url('https://dummyimage.com/800x600/0d2444/e6ecff&text=Project') center/cover no-repeat"></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;">
+        <div style="background:#101a3f;height:150px;border-radius:12px;"></div>
+        <div style="background:#0f1a3a;height:150px;border-radius:12px;"></div>
+        <div style="background:#0d2444;height:150px;border-radius:12px;"></div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-wrap">
+  <footer style="padding:30px 0 50px;color:#b7c2ff;font-size:14px;">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
       <div>© <span id="year"></span> Hyunsoo Fan Page</div>
-      <div class="chip">Made with ❤️ 엄밀함</div>
+      <div style="padding:6px 10px;background:var(--glass);border-radius:999px;">Made with ❤️ 엄밀함</div>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const toggle = document.getElementById('themeToggle');
-    if (localStorage.getItem('theme') === 'light') document.body.classList.add('light');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-    });
   </script>
 </body>
 </html>
