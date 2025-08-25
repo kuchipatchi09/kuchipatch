@@ -1,229 +1,110 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>8월의 2반 알리미</title>
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
-<style>
-  :root {
-    --bg: #ffffff;
-    --text: #111111;
-    --subtext: #555555;
-    --accent: #0071e3; /* 애플 블루 */
-    --border: #e5e5e5;
-    --card-bg: #fff;
-    --safe-font: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
-  }
-
-  * {box-sizing: border-box; margin:0; padding:0;}
-  body {
-    font-family: var(--safe-font);
-    background: var(--bg);
-    color: var(--text);
-    padding: 32px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
-
-  /* 헤더 */
-  .topbar {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .brand-sub {
-    margin-top: 6px;
-    font-size: 15px;
-    color: var(--subtext);
-  }
-  .designer {
-    font-size: 13px;
-    color: var(--subtext);
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    border-radius: 20px;
-  }
-
-  /* 인포 스트립 */
-  .info-strip {
-    width: 100%;
-    max-width: 1200px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 15px;
-    color: var(--subtext);
-    background: #fafafa;
-  }
-
-  /* 레이아웃 */
-  .layout {
-    width: 100%;
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 24px;
-  }
-  @media (max-width: 960px) {
-    .layout { grid-template-columns: 1fr; }
-  }
-
-  /* 카드 */
-  .card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    padding: 24px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-  }
-  .card h2 {
-    margin-bottom: 16px;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--accent);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-  }
-
-  /* 시간표 */
-  .table-wrap {overflow-x:auto;}
-  table.timetable {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 720px;
-    font-size: 15px;
-  }
-  colgroup col:first-child {width:60px;}
-  colgroup col:not(:first-child) {width: calc((100% - 60px)/5);}
-  th, td {border:1px solid var(--border);}
-  thead th {
-    padding: 12px;
-    background: #f5f5f5;
-    color: var(--text);
-    font-weight: 600;
-  }
-  tbody td {
-    padding: 10px;
-    text-align: center;
-    height: 56px;
-    font-weight: 500;
-    color: var(--text);
-  }
-  tbody td:first-child {
-    background: #fafafa;
-    color: var(--subtext);
-    font-weight: 600;
-  }
-
-  /* 공지사항 */
-  .notice-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .notice-item {
-    border-left: 4px solid var(--accent);
-    padding: 12px 16px;
-    background: #f9f9f9;
-    border-radius: 6px;
-    display: flex;
-    gap: 12px;
-  }
-  .notice-date {
-    font-weight: 600;
-    color: var(--accent);
-    min-width: 70px;
-  }
-  .notice-text {
-    color: var(--text);
-    font-size: 15px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>학급 알리미</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="topbar">
-    <div>
-      <h1>8월의 2반 알리미</h1>
-      <div class="brand-sub">시간표 · 이번주 공지 한눈에</div>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- 헤더 -->
+  <header class="shadow-md bg-white sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-2xl font-bold text-blue-600">📘 학급 알리미</h1>
+      <nav class="space-x-6 text-gray-700 font-medium">
+        <a href="#notice" class="hover:text-blue-600">공지사항</a>
+        <a href="#timetable" class="hover:text-blue-600">시간표</a>
+      </nav>
     </div>
-    <div class="designer">by HWANG SEOK HYUN</div>
-  </div>
+  </header>
 
-  <div class="info-strip">
-    <div>1학년 2반 충남과학고등학교 · 담임: 신미애</div>
-    <div id="meta-right"></div>
-  </div>
+  <!-- Hero -->
+  <section class="text-center py-10 bg-gradient-to-r from-blue-50 to-blue-100">
+    <h2 class="text-3xl font-semibold">오늘의 알림</h2>
+    <p id="today" class="mt-2 text-gray-700"></p>
+  </section>
 
-  <main class="layout">
-    <section class="card">
-      <h2>주간 시간표</h2>
-      <div class="table-wrap">
-        <table class="timetable">
-          <colgroup><col /><col /><col /><col /><col /><col /></colgroup>
-          <thead>
-            <tr>
-              <th>교시</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>물리</td><td>정보</td><td>정보</td><td>과제연구</td><td>생명과학</td></tr>
-            <tr><td>2</td><td>화학</td><td>체육</td><td>대수</td><td>과제연구</td><td>생명과학</td></tr>
-            <tr><td>3</td><td>대수</td><td>물리</td><td>미적분</td><td>영어</td><td>지구과학</td></tr>
-            <tr><td>4</td><td>체육</td><td>정보</td><td>과제연구</td><td>정보</td><td>지구과학</td></tr>
-            <tr><td>5</td><td>영어</td><td>국어</td><td>창체</td><td>화학</td><td>물리</td></tr>
-            <tr><td>6</td><td>지구과학</td><td>영어</td><td>창체</td><td>화학</td><td>생명과학</td></tr>
-            <tr><td>7</td><td>미적분</td><td>대수</td><td>창체</td><td>국어</td><td>국어</td></tr>
-          </tbody>
-        </table>
+  <!-- 공지사항 -->
+  <section id="notice" class="max-w-6xl mx-auto px-4 py-10">
+    <h3 class="text-2xl font-bold mb-6">📢 공지사항</h3>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="p-6 border rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="font-semibold text-lg mb-2">중간고사 일정 안내</h4>
+        <p class="text-gray-600">10월 첫째 주에 예정된 중간고사 범위를 확인하세요.</p>
       </div>
-    </section>
+      <div class="p-6 border rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="font-semibold text-lg mb-2">체육대회 준비</h4>
+        <p class="text-gray-600">다음 주 화요일까지 종목 신청 바랍니다.</p>
+      </div>
+    </div>
+  </section>
 
-    <aside>
-      <section class="card">
-        <h2>이번주 공지사항</h2>
-        <ul class="notice-list" id="notice-list"></ul>
-      </section>
-    </aside>
-  </main>
+  <!-- 시간표 -->
+  <section id="timetable" class="max-w-6xl mx-auto px-4 py-10">
+    <h3 class="text-2xl font-bold mb-6">📅 시간표</h3>
+    <div class="flex space-x-2 mb-4">
+      <button class="tab px-4 py-2 rounded-lg bg-blue-100 text-blue-600 font-medium" data-day="mon">월</button>
+      <button class="tab px-4 py-2 rounded-lg hover:bg-blue-100" data-day="tue">화</button>
+      <button class="tab px-4 py-2 rounded-lg hover:bg-blue-100" data-day="wed">수</button>
+      <button class="tab px-4 py-2 rounded-lg hover:bg-blue-100" data-day="thu">목</button>
+      <button class="tab px-4 py-2 rounded-lg hover:bg-blue-100" data-day="fri">금</button>
+    </div>
+    <table class="w-full text-center border border-gray-300 rounded-lg overflow-hidden">
+      <thead class="bg-blue-50">
+        <tr>
+          <th class="p-2 border">교시</th>
+          <th class="p-2 border">과목</th>
+        </tr>
+      </thead>
+      <tbody id="timetable-body"></tbody>
+    </table>
+  </section>
 
-<script>
-function updateMeta(){
-  const now=new Date();
-  const dateStr=now.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
-  const timeStr=now.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('meta-right').textContent=`${dateStr} · ${timeStr}`;
-}
-updateMeta();
-setInterval(updateMeta,60000);
+  <!-- Footer -->
+  <footer class="bg-gray-100 py-6 text-center text-gray-600 mt-10">
+    © 2025 학급 알리미
+  </footer>
 
-const notices=[
-  {date:"8/27",text:"교감선생님 퇴임식"},
-  {date:"8/27",text:"바른인성새김마당"},
-  {date:"다음주",text:"R&E 중간보고서 제출"},
-  {date:"9월",text:"중간고사!@@"}
-];
+  <script>
+    // 시간표 데이터
+    const timetable = {
+      mon: ["역학E", "물질E", "대수", "체육1", "공영2", "지과학", "미적1"],
+      tue: ["정과학", "체육1", "미적1", "공국2", "역학E", "공영2", "대수"],
+      wed: ["정과학", "기과제", "미적1", "기과제", "창체1", "창체1", "창체1"],
+      thu: ["기과제", "생과학", "공영2", "정과학", "물질E", "물질E", "공국2"],
+      fri: ["생과학", "생과학", "지과학", "지과학", "역학E", "생과학", "공국2"]
+    };
 
-const list=document.getElementById('notice-list');
-notices.forEach(n=>{
-  const li=document.createElement('li');
-  li.className="notice-item";
-  li.innerHTML=`<div class="notice-date">${n.date}</div><div class="notice-text">${n.text}</div>`;
-  list.appendChild(li);
-});
-</script>
+    const tbody = document.getElementById("timetable-body");
+    const tabs = document.querySelectorAll(".tab");
+
+    function renderTable(day) {
+      tbody.innerHTML = "";
+      timetable[day].forEach((subject, idx) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="border p-2">${idx + 1}</td>
+          <td class="border p-2">${subject}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("bg-blue-100", "text-blue-600"));
+        tab.classList.add("bg-blue-100", "text-blue-600");
+        renderTable(tab.dataset.day);
+      });
+    });
+
+    // 오늘 날짜 출력
+    const today = new Date();
+    document.getElementById("today").textContent =
+      today.toLocaleDateString("ko-KR", { weekday: "long", month: "long", day: "numeric" });
+
+    // 기본 월요일 시간표
+    renderTable("mon");
+  </script>
 </body>
 </html>
